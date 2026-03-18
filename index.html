@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before You Code</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5f0e8;
+    --paper-dark: #ebe4d8;
+    --accent: #c4450a;
+    --accent-light: #e8673220;
+    --muted: #8a8070;
+    --rule: #d4cbbe;
+    --step-num: #c4450a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* --- HEADER --- */
+  header {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 7vw, 64px);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  /* --- RULE --- */
+  .the-rule {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 24px 32px;
+    margin-bottom: 56px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .the-rule::before {
+    content: '✦';
+    position: absolute;
+    top: -12px;
+    left: 28px;
+    font-size: 20px;
+    color: var(--accent);
+    background: var(--paper);
+    padding: 0 8px;
+  }
+
+  .the-rule p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  /* --- STEPS --- */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0 24px;
+    padding: 36px 0;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .step:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .step-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    color: var(--step-num);
+    line-height: 1;
+    opacity: 0.35;
+    text-align: right;
+    padding-top: 2px;
+    user-select: none;
+  }
+
+  .step-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .step-content > p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+
+  .deliverable {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .deliverable::before {
+    content: '→';
+    font-size: 13px;
+  }
+
+  .example {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--rule);
+    padding: 14px 18px;
+    margin-top: 14px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .example-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .example p, .example ol {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .example ol {
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  .example ol li {
+    margin-bottom: 3px;
+  }
+
+  /* --- LITMUS TEST --- */
+  .litmus {
+    margin-top: 56px;
+    padding: 32px;
+    border: 2px solid var(--ink);
+    position: relative;
+  }
+
+  .litmus-label {
+    position: absolute;
+    top: -13px;
+    left: 24px;
+    background: var(--paper);
+    padding: 0 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .litmus p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .litmus p em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    margin-top: 48px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 600px) {
+    .page { padding: 40px 24px 60px; }
+    .step { grid-template-columns: 40px 1fr; gap: 0 16px; }
+    .step-number { font-size: 36px; }
+    .the-rule { padding: 20px 24px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">Reference Guide</div>
+    <h1>Before You <em>Code</em></h1>
+    <p class="subtitle">Six steps to complete before opening your editor — so every project gets finished, not abandoned.</p>
+  </header>
+
+  <div class="the-rule">
+    <p>If you can't narrate the entire experience out loud — from first impression to final interaction — without hesitating, you are not ready to code.</p>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <h2>Define the single purpose</h2>
+        <p>Write one sentence that states what this thing does and for whom. If you can't write this sentence clearly, you haven't thought enough yet. Everything else flows from this.</p>
+        <div class="example">
+          <div class="example-label">Example</div>
+          <p>"This loading screen builds anticipation before revealing the dashboard for the first time."</p>
+        </div>
+        <div class="deliverable">One sentence, written down</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <h2>Write all the content first</h2>
+        <p>Every heading, paragraph, button label, error message, empty state, and piece of micro-copy. Do it in a plain text file. Content dictates layout — not the other way around. This is the step that eliminates the "I don't know what goes here" feeling mid-build.</p>
+        <div class="example">
+          <div class="example-label">Includes</div>
+          <p>Headlines, body copy, CTAs, form labels, placeholder text, tooltips, success/error messages, loading text, 404 copy, footer links.</p>
+        </div>
+        <div class="deliverable">Complete copy document</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <h2>Map the user flow as a sequence</h2>
+        <p>Not wireframes. A numbered list of what happens, in order. This is your skeleton — the narrative structure the user will move through. For something like a loading page, write out the exact beats: what appears first, second, third, and what the transition to the main content feels like.</p>
+        <div class="example">
+          <div class="example-label">Example</div>
+          <ol>
+            <li>User lands → sees headline + hero image</li>
+            <li>Scrolls → three feature cards animate in</li>
+            <li>Hits CTA → modal opens with signup form</li>
+            <li>Submits → confirmation + redirect</li>
+          </ol>
+        </div>
+        <div class="deliverable">Numbered step-by-step flow</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">04</div>
+      <div class="step-content">
+        <h2>Sketch low-fidelity layouts</h2>
+        <p>Pen and paper. Rough boxes. No colors, no fonts, no polish. The goal is spatial arrangement tied to your content and flow. You should be able to "walk through" the experience in your head by looking at these. Spend 10–15 minutes, not hours.</p>
+        <div class="deliverable">Rough paper sketches</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">05</div>
+      <div class="step-content">
+        <h2>Collect visual references</h2>
+        <p>Find 3–5 screenshots of real sites or components that capture the feeling you want. Not to copy — to anchor your aesthetic decisions before you're knee-deep in CSS and second-guessing every choice. Pin them somewhere visible while you work.</p>
+        <div class="deliverable">3–5 pinned references</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">06</div>
+      <div class="step-content">
+        <h2>Lock your design constraints</h2>
+        <p>Pick your color palette (2–3 colors max), type scale, and spacing system before opening the editor. This eliminates hundreds of micro-decisions that drain energy during development. Write these values down and commit to them.</p>
+        <div class="example">
+          <div class="example-label">Decide on</div>
+          <p>2–3 colors, 1–2 typefaces, a spacing unit (e.g. 8px grid), max content width, and border-radius style.</p>
+        </div>
+        <div class="deliverable">Design tokens / constraint sheet</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="litmus">
+    <div class="litmus-label">Litmus Test</div>
+    <p>Can you narrate the <em>entire experience</em> out loud — from first impression to final interaction — without hesitating?<br>If yes, open your editor. If no, go back.</p>
+  </div>
+
+  <footer>Content → Flow → Layout → Aesthetics → Code</footer>
+
+</div>
+</body>
+</html>
